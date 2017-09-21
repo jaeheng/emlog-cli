@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var version = 'v0.0.1';
+var version = '0.2.0';
 var fs = require('fs');
 
 // help
