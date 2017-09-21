@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var version = '0.2.0';
+var version = '0.1.0';
 var fs = require('fs');
 
 // help
@@ -75,7 +75,7 @@ switch (cmd) {
         showHelp();
         break;
     case '-v':
-        console.log('emlog-cli:', version, '\r\n');
+        console.log('emlog-cli: v', version, '\r\n');
         break;
     default:
         showHelp()
