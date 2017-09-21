@@ -1,0 +1,20 @@
+{
+  "name": "emlog-cli",
+  "version": "0.0.1",
+  "description": "cli for emlog (http://emlog.net)",
+  "main": "index.js",
+  "bin": {
+    "emlog": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jaeheng/emlog-cli.git"
+  },
+  "keywords": [
+    "emlog",
+    "cli"
+  ],
+  "author": "jaeheng",
+  "license": "MIT",
+  "dependencies": {}
+}
