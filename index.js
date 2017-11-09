@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-
-var version = '0.1.1';
+var util = require('./lib/util');
+var path = require('path');
+var packageJSON = JSON.parse(util.readFile(path.resolve(__dirname + '/package.json')));
+var version = packageJSON.version;
 
 // components
 var plugin = require('./components/plugin/plugin.js');
@@ -47,7 +49,9 @@ switch (cmd) {
     showHelp();
     break;
   case '-v':
-    console.log('emlog-cli: v', version, '\r\n');
+    console.log('emlog-cli:  ', 'v' + version);
+    console.log('   author:  ', packageJSON.author.name);
+    console.log(packageJSON.description);
     break;
   default:
     showHelp()
