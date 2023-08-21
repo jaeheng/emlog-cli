@@ -1,10 +1,12 @@
 #!/usr/bin/env node
-var util = require('../../lib/util.js');
-var path = require('path');
+import util from '../../lib/util.js';
+import path from 'path';
 
-function create (name) {
-  var template = path.resolve(__dirname + '/beginning');
+function start (name) {
+  var template = path.resolve(__dirname + '/default');
   util.copy(template, './' + name);
 }
 
-exports.create = create;
+export default {
+  start
+};

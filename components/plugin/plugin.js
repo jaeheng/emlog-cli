@@ -1,46 +1,70 @@
 #!/usr/bin/env node
-var util = require('../../lib/util.js');
-var path = require('path');
+import inquirer from 'inquirer';
+import util from '../../lib/util.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 
 function createPlugin (config) {
-  // 读文件
-  var text = util.readFile(config.readFilePath);
-  // 处理文件
-  var handledText = util.tplHandler(text, undefined, config.name);
-  // 写文件
-  util.writeFile(handledText, config.outputPath, config.outputDir);
-}
+  var outputDir = './' + config.plugin_name;
 
-function create (name) {
-  var outputDir = './' + name;
-
-  var fileConfig = [
-    {
-      name: name,
-      readFilePath: path.resolve(__dirname + '/plugin.php'),
-      outputPath: './' + name + '/' + name + '.php'
-    },
-    {
-      name: name,
-      readFilePath: path.resolve(__dirname + '/plugin-callback.php'),
-      outputPath: './' + name + '/' + name + '_callback.php'
-    },
-    {
-      name: name,
-      readFilePath: path.resolve(__dirname + '/plugin-setting.php'),
-      outputPath: './' + name + '/' + name + '_setting.php'
-    },
-    {
-      name: name,
-      readFilePath: path.resolve(__dirname + '/plugin-show.php'),
-      outputPath: './' + name + '/' + name + '_show.php'
-    }
+  const files = [
+    'plugin.php',
+    'plugin_callback.php',
+    'plugin_setting.php',
+    'plugin_show.php',
+    'plugin_user.php'
   ];
 
-  fileConfig.map(function (plugin) {
-    plugin.outputDir = outputDir;
-    createPlugin(plugin);
+  files.map(function (plugin) {
+     // 读文件
+    var text = util.readFile(path.resolve(__dirname + '/default/' + plugin));
+    // 处理文件
+    text = util.tplHandler(text, '_PluginName_', config.plugin_name);
+    text = util.tplHandler(text, '_YourName_', config.author_name + '<' + config.email + '>');
+
+    // 写文件
+    util.writeFile(text, './' + config.plugin_name + '/' + config.plugin_name + plugin.replace('plugin', ''), outputDir);
   });
 }
 
-exports.create = create;
+function start (name) {
+
+  const questions = [
+    {
+      type: 'input',
+      name: 'plugin_name',
+      message: "请输入插件名称:",
+    },
+    {
+      type: 'input',
+      name: 'author_name',
+      message: "请输入作者名称:",
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: "请输入作者Email:",
+    }
+  ];
+  
+  inquirer.prompt(questions).then(answers => {
+    console.log(`Hi ${answers.plugin_name}!`);
+    console.log(`Hi ${answers.author_name}!`);
+    console.log(`Hi ${answers.email}!`);
+
+    if (answers.plugin_name) {
+      createPlugin(answers);
+    } else {
+      console.log('请输入插件名称');
+    }
+  });
+}
+
+export default {
+  start
+};

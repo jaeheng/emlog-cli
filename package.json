@@ -1,7 +1,7 @@
 {
   "name": "emlog-cli",
-  "version": "0.2.1",
-  "description": "cli for emlog (http://emlog.net)",
+  "version": "0.2.2",
+  "description": "cli for emlog pro (https://emlog.net)",
   "main": "index.js",
   "bin": {
     "emlog": "./index.js"
@@ -14,7 +14,10 @@
     "emlog",
     "cli"
   ],
-  "author": "jaeheng",
+  "author": "jaeheng <hi@ziheng.vip>",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "inquirer": "^9.2.10"
+  },
+  "type": "module"
 }
