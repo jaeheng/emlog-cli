@@ -41,9 +41,9 @@ switch (cmd) {
     break;
   case 'template':
     if (name) {
-      console.log('emlog template <template_name>')
       template.start(name);
     } else {
+      console.log('emlog template <template_name>')
       showHelp()
     }
     break;

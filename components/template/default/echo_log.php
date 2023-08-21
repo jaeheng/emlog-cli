@@ -39,11 +39,14 @@ if (!defined('EMLOG_ROOT')) {
                         </div>
                     </div>
                 </div>
+
+                <?php if(!empty(_g('relief'))):?>
                 <div class="panel">
                     <div class="panel-body">
-                        <?php echo $config['relief']; ?>
+                        <?= _g('relief'); ?>
                     </div>
                 </div>
+                <?php endif;?>
 
                 <div class="panel">
                     <div class="panel-heading">
@@ -53,11 +56,11 @@ if (!defined('EMLOG_ROOT')) {
                               style="font-size: 12px;">本文最后编辑于<?php echo gmdate('Y-n-j h:i:s', $date); ?></span>
                     </div>
                     <div class="panel-body author">
-                        <img src="<?php echo !empty($the_author['avatar']) ? BLOG_URL . $the_author['avatar'] : TEMPLATE_URL . 'dist/images/default_avatar.png'; ?>"
+                        <img src="<?php echo !empty($the_author['avatar']) ? BLOG_URL . $the_author['avatar'] : TEMPLATE_URL . 'static/images/default_avatar.png'; ?>"
                              alt="<?php echo $the_author['name']; ?>" class="avatar">
                         <p class="author-desc"><?php echo $the_author['des']; ?></p>
-                        <a href="<?php echo $config['weibo_url']; ?>"><img
-                                    src="<?php echo TEMPLATE_URL; ?>/dist/images/weibo_48_48.png" alt="作者的微博"
+                        <a href="<?= _g('weibo'); ?>"><img
+                                    src="<?php echo TEMPLATE_URL; ?>/static/images/weibo_48_48.png" alt="作者的微博"
                                     class="icon"></a>
                     </div>
                 </div>

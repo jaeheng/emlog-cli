@@ -19,12 +19,12 @@ function widget_blogger($title)
             <div id="bloggerinfoimg">
                 <?php if (!empty($user_cache[1]['photo']['src'])): ?>
                     <img src="<?php echo BLOG_URL . $user_cache[1]['photo']['src']; ?>"
-                         width="<?php echo $user_cache[1]['photo']['width']; ?>"
-                         height="<?php echo $user_cache[1]['photo']['height']; ?>" alt="blogger"/>
+                         width="64"
+                         height="64" alt="blogger"/>
                 <?php endif; ?>
+                <div><h4><?php echo $name; ?></h4>
+                    <p><?php echo $user_cache[1]['des']; ?></p></div>
             </div>
-            <p><b><?php echo $name; ?></b>
-                <?php echo $user_cache[1]['des']; ?></p>
         </ul>
     </div>
 <?php } ?>
@@ -335,7 +335,7 @@ function blog_navi()
 //blog：编辑
 function editflg($logid, $author)
 {
-    $editflg = ROLE == ROLE_ADMIN || $author == UID ? '<a href="' . BLOG_URL . 'admin/write_log.php?action=edit&gid=' . $logid . '" target="_blank">编辑</a>' : '';
+    $editflg = ROLE == ROLE_ADMIN || $author == UID ? '<a href="' . BLOG_URL . '/admin/page.php?action=mod&id=' . $logid . '" target="_blank">编辑</a>' : '';
     echo $editflg;
 }
 
@@ -564,7 +564,7 @@ function getSystemInfo()
 function getImgFromDesc($content)
 {
     preg_match_all("|<img[^>]+src=\"([^>\"]+)\"?[^>]*>|is", $content, $img);
-    return !empty($img[1]) ? $img[1][0] : TEMPLATE_URL . 'dist/images/article.jpg';
+    return !empty($img[1]) ? $img[1][0] : TEMPLATE_URL . 'static/images/article.jpg';
 }
 
 /**

@@ -18,8 +18,8 @@ if (blog_tool_ishome()) {
         <div class="widget">
             <h3>联系我们</h3>
             <div class="widget-inner">
-                <p>Email: <a href="mailto:<?php echo $config['email']; ?>"><?php echo $config['email']; ?></a></p>
-                <p>Weibo: <a href="<?php echo $config['weibo_url']; ?>"><?php echo $config['weibo_url']; ?></a></p>
+                <p>Email: <a href="mailto:<?= _g('email'); ?>"><?= _g('email'); ?></a></p>
+                <p>Weibo: <a href="<?= _g('weibo'); ?>"><?= _g('weibo'); ?></a></p>
                 <p><?php if (Option::get('rss_output_num')): ?>
                         <a href="<?php echo BLOG_URL; ?>rss.php" title="RSS订阅">RSS订阅</a>
                     <?php endif; ?>
@@ -43,22 +43,28 @@ if (blog_tool_ishome()) {
 
 <!--网站小工具-->
 <div class="site-tools">
-    <a href="<?php echo $config['gift'];?>" target="_blank" class="item"><i class="iconfont icon-gift"></i></a>
-    <?php foreach ($config['qrcode'] as $value) : ?>
-    <a href="javascript:;" class="item">
-        <i class="iconfont icon-qrcode"></i>
-        <div class="popup">
-            <img src="<?php echo $value['url']; ?>" alt="<?php echo $value['title']; ?>">
-            <h3 class="title"><?php echo $value['title']; ?></h3>
-        </div>
-    </a>
-    <?php endforeach;?>
-    <a href="<?php echo $config['qq'];?>" class="item" target="_blank">
+    <?php if (_g('reward')) : ?>
+        <a href="javascript:;" class="item">
+            <i class="iconfont icon-weixin"></i>
+            <div class="popup">
+                <img src="<?= _g('reward_weixin'); ?>" alt="微信打赏">
+                <h3 class="title">微信打赏</h3>
+            </div>
+        </a>
+        <a href="javascript:;" class="item">
+            <i class="iconfont icon-alipay"></i>
+            <div class="popup">
+                <img src="<?= _g('reward_alipay'); ?>" alt="支付宝">
+                <h3 class="title">支付宝</h3>
+            </div>
+        </a>
+    <?php endif;?>
+    <a href="http://wpa.qq.com/msgrd?v=3&uin=<?= _g('qq');?>&site=qq&menu=yes" class="item" target="_blank">
         <i class="iconfont icon-qq"></i>
     </a>
     <div class="item active gotoup" id="gotoup"><i class="iconfont icon-up"></i></div>
 </div>
 <!--网站小工具 ／-->
-<script src="<?php echo TEMPLATE_URL;?>/dist/js/main.min.js"></script>
+<script src="<?= load_static('js/main.min.js');?>"></script>
 </body>
 </html>
