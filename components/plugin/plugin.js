@@ -53,14 +53,12 @@ function start (name) {
   ];
   
   inquirer.prompt(questions).then(answers => {
-    console.log(`Hi ${answers.plugin_name}!`);
-    console.log(`Hi ${answers.author_name}!`);
-    console.log(`Hi ${answers.email}!`);
-
-    if (answers.plugin_name) {
+    if (util.checkStringFormat(answers.plugin_name)) {
+      console.log(`Hi ${answers.author_name} <${answers.email}>! 您要创建的插件是 ${answers.plugin_name}`);
       createPlugin(answers);
     } else {
-      console.log('请输入插件名称');
+      console.log('请以小写的英文字母、数字、下划线(_)、横杠(-) 组合而成，且只能以字母作为开头');
+      console.log('doc: https://www.emlog.net/docs/#/plugin?id=%e5%91%bd%e5%90%8d%e8%a7%84%e5%88%99');
     }
   });
 }
