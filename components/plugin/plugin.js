@@ -11,9 +11,8 @@ function toHump(name) {
   var str = name.replace(/\_(\w)/g, function (all, letter) {
     return letter.toUpperCase();
   });
-  var arr = str.split("", 1);
 
-  return arr[0].toUpperCase() + arr[1];
+  return str.slice(0, 1).toUpperCase() + str.slice(1);
 }
 
 function createPlugin(config) {
@@ -26,6 +25,7 @@ function createPlugin(config) {
     "plugin_show.php",
     "plugin_user.php",
     "plugin_view.php",
+    "plugin_class.php",
   ];
 
   files.map(function (plugin) {
