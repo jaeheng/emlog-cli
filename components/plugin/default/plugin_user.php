@@ -4,7 +4,7 @@
     Author: _YourName_
 */
 
-!defined('EMLOG_ROOT') && exit('access deined!');
+!defined('EMLOG_ROOT') && exit('Access Denied!');
 
 //插件设置页面
 function plugin_user_view()

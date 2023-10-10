@@ -8,17 +8,12 @@ Author: _YourName_
 Author URL: https://www.emlog.net
 */
 
-!defined('EMLOG_ROOT') && exit('access deined!');
+!defined('EMLOG_ROOT') && exit('Access Denied!');
 
-/**
- * 在侧边栏显示插件的设置页面入口
- */
-function _PluginName__menu()
-{
-    echo '<div class="sidebarsubmenu" id="_PluginName_"><a href="./plugin.php?plugin=_PluginName_">_PluginName_</a></div>';
+
+
+if (!class_exists('_PluginHumpName_', false)) {
+    include __DIR__ . '/_PluginName__class.php';
 }
 
-/*
-    加入到侧边栏钩子中
-*/
-addAction('adm_sidebar_ext', '_PluginName__menu');
+_PluginHumpName_::getInstance()->init();

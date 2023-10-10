@@ -4,6 +4,6 @@
     Author: _YourName_
 */
 
-!defined('EMLOG_ROOT') && exit('access deined!');
+!defined('EMLOG_ROOT') && exit('Access Denied!');
 
 echo '插件名称: _PluginName_';
