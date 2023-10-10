@@ -1,13 +1,4 @@
 <?php
-/*
-Plugin Name: _PluginName_
-Version: 0.0.1
-Plugin URL: https://www.emlog.net/plugin/detail/xx
-Description: _PluginName_:一款emlog插件
-Author: _YourName_
-Author URL: https://www.emlog.net/author/index/xx
-*/
-
 !defined('EMLOG_ROOT') && exit('Access Denied!');
 
 
