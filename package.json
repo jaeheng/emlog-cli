@@ -1,6 +1,6 @@
 {
   "name": "emlog-cli",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "cli for emlog pro (https://emlog.net)",
   "main": "index.js",
   "bin": {

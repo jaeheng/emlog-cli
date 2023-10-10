@@ -47,7 +47,9 @@ class _PluginHumpName_
         }
         $this->_initialized = true;
 
-        addAction('adm_menu_ext', $this->hookSidebar);
+        addAction('adm_menu_ext', function () {
+            $this->hookSidebar();
+        });
     }
 
     public function success($msg, $data = '')
